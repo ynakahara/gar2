@@ -1,0 +1,31 @@
+  gar : a simple unzip library.
+
+
+CONTAINED FILES/DIRECTORIES
+
+  Makefile  -- the Makefile.
+
+  gar.h     -- declaration of the core library members.
+  garlib.h  -- declaration of the additional library members.
+  gardump.c -- an example program.
+
+  garaux.h garlib.c gfile.c gfilecrt.c garerror.c garalloc.c ginflate.c
+  distext.inc lenext.inc
+            -- library source files.
+
+  test.zip test.zip.lst pangram.txt pangramx.txt alice.txt
+            -- test files.
+
+
+INSTALLED FILES
+
+  These files are installed by the `make install` command:
+
+    libgar.a -- the static link library.
+    gar.h    -- declaration of the core library members.
+    garlib.h -- declaration of the additional library members.
+
+
+AUTHOR
+
+  Nakahara, Yusuke.
