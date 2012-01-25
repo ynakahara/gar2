@@ -6,6 +6,13 @@ LDLIBS=
 AR=ar
 ARFLAGS=cru
 RM=rm -f
+INSTALL=install
+INSTALL_DATA=$(INSTALL)
+
+prefix=/usr/local
+exec_prefix=$(prefix)
+libdir=$(exec_prefix)/lib
+includedir=$(prefix)/include
 
 MYCFLAGS=
 
@@ -28,6 +35,18 @@ all: $(target)
 clean:
 	$(RM) $(output)
 
+install: $(target_lib)
+	[ -d $(libdir) ] || mkdir $(libdir)
+	[ -d $(includedir) ] || mkdir $(includedir)
+	$(INSTALL_DATA) libgar.a $(libdir)/libgar.a
+	$(INSTALL_DATA) gar.h $(includedir)/gar.h
+	$(INSTALL_DATA) garlib.h $(includedir)/garlib.h
+
+uninstall:
+	$(RM) $(libdir)/libgar.a
+	$(RM) $(includedir)/gar.h
+	$(RM) $(includedir)/garlib.h
+
 test: gardump
 	./gardump test.zip | diff - test.zip.lst
 	./gardump test.zip pangram.txt | diff - pangram.txt
@@ -39,7 +58,7 @@ gcov:
 	$(MAKE) MYCFLAGS="-fprofile-arcs -ftest-coverage" test
 	$(GCOV) $(lib_source)
 
-.PHONY: all clean test gcov
+.PHONY: all clean install uninstall test gcov
 
 libgar.a: $(lib_object)
 gardump: gardump.o $(lib_object)
