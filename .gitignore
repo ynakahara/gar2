@@ -1,0 +1,6 @@
+*.o
+*.gcda
+*.gcno
+*.c.gcov
+/libgar.a
+/gardump
