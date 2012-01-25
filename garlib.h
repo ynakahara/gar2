@@ -27,6 +27,8 @@ void gar_gfile_seek(const gar_gfile_t *gf, gar_off_t off, jmp_buf env);
 void gar_gfile_dup(const gar_gfile_t *gf, gar_gfile_t *dst, jmp_buf env);
 void gar_gfile_close(gar_gfile_v *gf);
 
+void gar_inflate(gar_gfile_v *gf, jmp_buf env);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

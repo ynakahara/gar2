@@ -254,6 +254,10 @@ static gar_fdata_t *open_fdata(gar_t *G, const gar_zstat_t *zstat,
   gar_gfile_dup(&G->gf, &fd->gf, env);
   gar_gfile_open_part(&fd->gf, zstat->data_off, zstat->data_len, env);
 
+  if (zstat->comp_method == 8) {
+    gar_inflate(&fd->gf, env);
+  }
+
   return fd;
 }
 
